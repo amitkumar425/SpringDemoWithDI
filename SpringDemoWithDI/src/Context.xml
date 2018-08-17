@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+
+	<bean id="address" class="com.cg.organization.pojo.Address" >
+		<constructor-arg value="01" ></constructor-arg>
+		<constructor-arg value="02" ></constructor-arg>
+		<constructor-arg value="Paris" ></constructor-arg>
+		<constructor-arg value="paris" ></constructor-arg>
+		<constructor-arg value="200300" ></constructor-arg>
+		<constructor-arg value="France" ></constructor-arg>
+	</bean>
+
+	<util:set id="globalPresence">
+		<value>Chennai</value>
+		<value>Banglore</value>
+		<value>Hyderabad</value>
+		<value>Mumbai</value>
+	</util:set>
+	
+	<util:list id="boardMembers" >
+		<value>Raywon</value>
+		<value>Sharad Dixit</value>
+		<value>Paul Hermeline</value>
+		<value>Serge Camph </value>
+	</util:list>
+	
+	<util:map id="projectManager" >
+		<entry key="OBS" value="Sharad Dixit" ></entry>
+		<entry key="CM" value="ABC" ></entry>
+		<entry key="ODT" value="DEF" ></entry>
+		<entry key="GLS" value="GHI" ></entry>
+	</util:map>
+	
+	
+	
+	
+	<util:properties id="prop" location="classpath:ProxyServerList.properties" ></util:properties>
+	
+	<bean id="org" class="com.cg.organization.Organization" >
+		<property name="proxyServer" ref="prop" ></property>
+		<property name="projectManager" ref="projectManager" ></property>
+		<property name="boardMembers" ref="boardMembers" ></property>
+		<property name="globalPresence" ref="globalPresence" ></property>
+			<constructor-arg value="Capgemini" ></constructor-arg>
+			<constructor-arg ref="address" ></constructor-arg>
+			<constructor-arg value="2.9" ></constructor-arg>
+			<constructor-arg value="02/08/1880" ></constructor-arg>
+			<constructor-arg value="100000" ></constructor-arg>
+	</bean>	
+	
+</beans>
